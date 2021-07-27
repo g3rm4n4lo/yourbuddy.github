@@ -1,0 +1,20 @@
+<ion-header>
+<ion-toolbar color="dark">
+<ion-icon (click)="dismiss()" name="arrow-back"slot="start"></ion-icon>
+<ion-title> Random Jokes </ion-title>
+</ion-toolbar>
+</ion-header>
+<ion-content slot="center">
+<ion-card > <ion-card-header color="dark">Here Comes the Pun:
+</ion-card-header><h5>{{joke.setup}}{{joke.punchline}}</h5>
+</ion-card>
+<ion-card>  <ion-card-header color="dark"> <ion-label>
+  Laughter is the best medicine</ion-label></ion-card-header><h7>
+  Go ahead and give it a try. Turn the corners of your mouth up into a smile 
+  and then give a laugh, even if it feels a little forced. 
+  Once you've had your chuckle, take stock of how you're feeling. 
+  Are your muscles a little less tense? Do you feel more relaxed or buoyant? 
+  That's the natural wonder of laughing at work.
+</h7>
+ </ion-card>
+</ion-content>

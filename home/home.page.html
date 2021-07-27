@@ -1,0 +1,66 @@
+<ion-header >
+<ion-toolbar color="dark">
+<ion-title slot ="end" size="small">
+<p>{{today | date:'fullDate'}}<ion-icon name="calendar-outline"> </ion-icon></p></ion-title>
+<ion-title slot="start" size="small">Hello, My friend <ion-icon name="happy-outline"></ion-icon></ion-title>  
+</ion-toolbar>
+</ion-header>
+<ion-content> 
+          
+    <ion-refresher pullFactor="0.5" pullMin="50" pullMax="80"slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle" pullingText="Pull to refresh" refreshingSpinner="circles"></ion-refresher-content>
+    </ion-refresher>
+    <div class="container">    
+    <ion-card class="ion-margin" >
+    <ion-card-header>
+    <ion-item color="light dark">
+    <ion-label> <h1> Reminder!<ion-icon name="alarm-outline"></ion-icon></h1>
+    </ion-label>
+    </ion-item>
+    </ion-card-header>
+    </ion-card>
+    <ion-card color="dark" size="ion-margin" *ngFor="let item of todoList; let i=index">
+    <ion-card-header> 
+    <ion-item color="light"><ion-label><ion-card-subtitle [style.color]="item.itemPriority==='high' ? 'red':(item.itemPriority === 'low'? 'green': 'orange')">{{item.itemCategory}}
+    </ion-card-subtitle >
+    <ion-icon *ngIf = "item.itemPriority=== 'high' "color="danger" size= "small" name="ellipse"></ion-icon>
+    <ion-icon *ngIf = "item.itemPriority=== 'middle' "color="orange" size= "small" name="ellipse"></ion-icon>
+    <ion-icon *ngIf = "item.itemPriority=== 'low' "color="green" size= "small" name="ellipse"></ion-icon>
+    <b>{{item.itemName}}</b></ion-label></ion-item>    
+    </ion-card-header> 
+    <ion-card-content>
+    <ion-label> Due {{item.itemDueDate}}</ion-label>
+    </ion-card-content>
+    <ion-card-footer>
+    <ion-item button (click)="done(i)">
+    <ion-icon name="checkmark-outline">
+    </ion-icon>
+    <b>Done</b>
+    </ion-item>
+    <ion-item button (click)="delete(i)">
+    <ion-icon name="trash-outline">
+    </ion-icon>
+    <b>Cancel</b>
+    </ion-item>
+    <ion-item button (click)="TodoPage()">
+    <ion-icon name="pencil-outline">
+    </ion-icon>
+    <b>Edit</b>
+    </ion-item>
+    </ion-card-footer>
+    </ion-card>
+    <ion-footer>
+    <ion-toolbar>
+    <ion-fab-button slot="end" (click)="TodoPage()" slot="end" size="small" color="dark">
+    <ion-icon  name="add-outline"></ion-icon></ion-fab-button> 
+    <ion-fab-button (click)="Setting()" slot="end" size="small" color="dark">
+    <ion-icon name="bulb-outline"></ion-icon></ion-fab-button> 
+    <ion-fab-button slot="end"  (click)=" Help()"slot="end" size="small" color="dark">
+    <ion-icon name="help-outline"></ion-icon></ion-fab-button> 
+    <ion-fab-button slot="end"  (click)=" JokePage()"slot="end" size="small" color="dark">
+    <ion-icon name="happy-outline"></ion-icon></ion-fab-button> 
+    </ion-toolbar>  
+    </ion-footer>
+    </div>
+    </ion-content>
+    
